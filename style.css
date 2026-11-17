@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaisei+Tokumin&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol&display=swap');
+/* ============================================================
+   第8回 小課題②：トップページ（スターター）
+   ★のところが、自分で決める場所です。
+   骨組み（並べ方・スマホ対応）は、先に入れてあります。
+   ============================================================ *
+
+/* ---- 1. 色：まず、ここを決める（授業の「配色」の項） ---- */
+:root {
+  --base: #fffdf2;      /* ★ベース色：背景（面積がいちばん広い） */
+  --base-sub: #e7efe0;  /* ★ベースの、ひとつ濃い色：カードや帯の背景 */
+  --main: #127441;      /* ★メイン色：見出し、ヘッダー、最初の画面の背景 */
+  --accent: #e8f5b8;    /* ★アクセント色：ボタンだけに使う（ここは、必ず、変える） */
+  --text: #21401c;      /* ★文字の色：背景との差（コントラスト）を確かめる */
+}
+
+/* ---- 余白：決めた大きさだけを使う（★大きさは、変えてよい）。上の「色」の :root とは、別のブロック ---- */
+:root {
+  --s1: .5rem;
+  --s2: 1rem;
+  --s3: 1.5rem;
+  --s4: 3rem;
+  --s5: 5rem;
+}
+
+/* ---- 2. 全体の土台 ---- */
+* { box-sizing: border-box; margin: 0; }
+
+body {
+  /* ★font-family：優先順に並べて、最後に sans-serif か serif */
+  /* ★font-size、line-height（行の間隔）も、ここで決める */
+    font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
+  font-size: 1rem
+  line-height: 1.8
+  color: var(--text);
+  background-color: var(--base);
+}
+
+.photo{
+  width: 200px;
+  height: auto;
+  display: block;
+  margin: 15px auto;
+}
+
+/* ★見出しだけ、別のフォントにするなら、ここ */
+/* h1, h2, h3, .logo { font-family: ...; } */
+h1{
+  font-size: 2.5rem !important;
+  line-height: 1.2;
+  font-family: "Kaisei Tokumin", serif;
+  font-weight: 550;
+  font-style: normal;
+}
+h2{
+  font-size: 1.7em !important;
+  line-height: 1.2;
+  font-family: "Kaisei Decol", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-weight: 600;
+}
+h3{
+  font-size: 1.4rem;
+  font-weight: 900;
+}
+
+/* ---- 3. 中身の幅：最大960pxで、中央に ---- */
+.inner { max-width: 960px; margin: 0 auto; }
+.site-header, main > section, footer { padding-left: var(--s3); padding-right: var(--s3); }
+
+/* ---- 4. ヘッダー ---- */
+.site-header { padding-top: var(--s2); padding-bottom: var(--s2); border-bottom: 1px solid var(--base-sub); }
+.site-header .inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--s1) var(--s3); }
+.logo { color: var(--main); font-size: 1.4rem; font-weight: 700; text-decoration: none; }
+.site-header nav ul { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: var(--s1) var(--s3); }
+.site-header nav a { color: var(--text); text-decoration: none; }
+.site-header nav a:hover { text-decoration: underline; }
+
+/* ---- 5. 最初の画面 ---- */
+.hero { background-color: var(--main); color: var(--base); padding-top: var(--s4); padding-bottom: var(--s4); }
+.hero h1 { font-size: 2rem; margin-bottom: var(--s2); }   /* ★文字の大きさ：見出しの階層をつける */
+.hero p { margin-bottom: var(--s3); }
+.btn { display: inline-block; background-color: var(--accent); color: var(--text); font-weight: 700; padding: .8rem 1.6rem; border-radius: 6px; text-decoration: none; }
+.btn:hover { filter: brightness(1.08); }
+
+/* ---- 6. 各セクション ---- */
+.features, .story, .info { padding-top: var(--s4); padding-bottom: var(--s4); }   /* ★セクションの間の余白 */
+.features h2, .story h2, .info h2 { font-size: 1.5rem; color: var(--main); margin-bottom: var(--s3); }
+
+.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s3); }
+.card { background-color: var(--base-sub); border-radius: 8px; padding: var(--s3); }
+.card h3 { color: var(--main); margin-bottom: var(--s1); }
+
+.story { background-color: var(--base-sub); }
+.story p { max-width: 36em; margin-bottom: var(--s2); }   /* 1行の長さを、短くする */
+.story .inner { display: grid; grid-template-columns: minmax(0, 1fr) 200px; column-gap: var(--s3); align-items: start; }
+.story h2 { grid-column: 1 / -1; }
+.story .photo { grid-column: 2; grid-row: 2 / span 2; margin: 0; }
+
+.info dl { display: grid; grid-template-columns: 7em 1fr; gap: var(--s1) var(--s2); margin-bottom: var(--s3); }
+.info dt { font-weight: 700; color: var(--main); }
+
+footer { background-color: var(--text); color: var(--base); font-size: .85rem; padding-top: var(--s3); padding-bottom: var(--s3); }
+
+/* ---- 7. スマホ：1列に（★自分のページに合わせて、確かめる・直す） ---- */
+@media (max-width: 700px) {
+  .cards { grid-template-columns: 1fr; }
+  .info dl { grid-template-columns: 1fr; gap: 0; }
+  .info dd { margin-bottom: var(--s2); }
+  .story .inner { grid-template-columns: 1fr; }
+  .story .photo { grid-column: 1; grid-row: auto; margin: 15px auto; }
+  /* ★メニューが、スマホで、窮屈なときは、ここで直す */
+}
+
+
+/* ===== ハンバーガーメニュー ===== */
+.menu-check {
+  display: none;
+}
+
+.menu-btn {
+  display: none;
+  width: fit-content;
+  margin: 16px auto 0;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #21401c;
+  border: 2.3px solid #21401c;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .menu-check {
+    display: block;
+    position: absolute;
+    opacity: 0;
+  }
+
+  .menu-btn {
+    display: block;
+  }
+
+  .menu-check:focus-visible + .menu-btn {
+    outline: 3px solid #90cdf4;
+    outline-offset: 2px;
+  }
+
+ .site-header nav ul {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .menu-check:checked ~ ul {
+    display: flex;
+  }
+}
+
+/* ボタンにマウスを乗せたら、少し色を変える*/
+.menu-btn:hover {
+  background-color: var(--accent-hover);
+   }
+   

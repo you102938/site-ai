@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>okinawaの沼｜ひとことの説明</title>
+  <!-- ★フォントを Google Fonts から使うときは、ここに <link> を足す（授業の「文字」の項を見る） -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- ★設計図（用紙）の上から順に、書き換える。部品は、増やしても、減らしてもよい。順番も、設計図に合わせて変える -->
+  <header class="site-header">
+    <div class="inner">
+      <a class="logo" href="index.html">okinawaの沼</a>
+      <nav>
+        <!-- ★追加：開閉のスイッチになる、チェックボックス -->
+  <input type="checkbox" id="menu-check" class="menu-check">
+  <label for="menu-check" class="menu-btn">☰ メニュー</label>
+
+        <ul>
+          <li><a href="#">ホーム</a></li>
+          <li><a href="#features">沖縄の魅力</a></li>
+          <li><a href="#about">季節の楽しみ方</a></li>
+          <li><a href="#access">旅行プラン</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- 最初の画面（ファーストビュー）：何のサイトか、だれ向けか、してほしい行動 -->
+    <section class="hero">
+      <div class="inner">
+        <h1>次の長期休みは　沖縄で最高の思い出を</h1>
+        <p>自然・食・体験など幅広いコンテンツで</p>
+        <a class="btn" href="#access">してほしい行動のボタン</a>
+      </div>
+    </section>
+
+    <!-- 伝えたいこと（3つまで） -->
+    <section class="features" id="features">
+      <div class="inner">
+        <h2>沖縄の魅力</h2>
+        <div class="cards">
+          <article class="card">
+            <h3>自然・絶景</h3>
+             <img class="photo" src="image/sea.jpeg" alt="海の写真">
+            <p>「沖縄＝海」だけではない！木漏れ日の中を茶利で駆け抜けたり、
+              写真映えを狙える鍾乳洞を探索したり、陸の自然もテンション上がること間違いなし！</p>
+          </article>
+          <article class="card">
+            <h3>グルメ</h3>
+            <img class="photo" src="image/okinawasoba.jpeg" alt="沖縄そばの写真">
+            <p>沖縄そばやタコライスは、お店によって味の個性が異なるから何軒も巡りたくなる！
+              さらに、沖縄の定番ファーストフード「A＆W」や、みんな大好き「ブルーシールアイス」で、
+              旅の合間にワイワイ寄り道しよう♪
+            </p>
+          </article>
+          <article class="card">
+            <h3>アクティビティ</h3>
+            <img class="photo" src="image/snorkeling.jpeg" alt="シュノーケルの写真">
+            <p>バナナボートやシュノーケリングで盛り上がるのはもちろん！スリル満点のジップラインやジャングルを
+            めぐる冒険感強めのフィールド体験、沖縄ならではのモノづくり体験まで、思い出に残るイベントが盛りだくさん☆彡
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 紹介・背景 -->
+    <section class="story" id="about">
+      <div class="inner">
+        <h2>季節の楽しみ方</h2>
+        <p>【春】　春の沖縄はコートいらずで、２月の平均気温は約１７度と過ごしやすい気候です。２月前半は観光客が少なく落ち着いて巡れる穴場シーズンであり、航空券や宿も１年の中で最も安い時期の一つとなっており、
+          ホエールウォッチングを楽しめるほか、３月には各地で海開きも行われます。
+        </p>
+        <p>【夏】　夏の沖縄は、写真映え間違いなしのエメラルドグリーンの海と青空の下で海水浴やマリンスポーツを満喫できる最高のシーズンです。その一方で、台風が接近しやすくなる時期でもあるため、天気や運行情報のこまめな注意が必要です。
+        </p>
+        <img class="photo" src="image/2season.jpeg" alt="季節の写真">
+      </div>
+    </section>
+
+    <!-- 情報・行動 -->
+    <section class="info" id="access">
+      <div class="inner">
+        <h2>旅行プラン</h2>
+        <dl>
+          <dt>項目</dt><dd>内容</dd>
+          <dt>項目</dt><dd>内容</dd>
+        </dl>
+        <a class="btn" href="#">してほしい行動のボタン</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="inner">
+      <p>© 2026 サイト名</p>
+    </div>
+  </footer>
+</body>
+</html>
