@@ -1,6 +1,7 @@
 const form = document.querySelector("main form");
 const nameInput = document.getElementById("name");
 const emailInput = document.getElementById("email");
+const emailError = document.getElementById("email-error");
 const subjectInput = document.getElementById("subject");
 const messageInput = document.getElementById("message");
 const messageError = document.getElementById("message-error");
@@ -27,6 +28,24 @@ function addConfirmationRow(list, label, value) {
   description.textContent = value;
   list.append(term, description);
 }
+
+function getEmailError() {
+  const email = emailInput.value.trim();
+
+  if (!email) {
+    return "メールアドレスを入力してください。";
+  }
+  if (emailInput.validity.typeMismatch) {
+    return "メールアドレスの形で、入力してください（例：name@example.com）";
+  }
+  return "";
+}
+
+function updateEmailError() {
+  showFieldError(emailInput, emailError, getEmailError());
+}
+
+emailInput.addEventListener("input", updateEmailError);
 
 function getMessageError() {
   const length = messageInput.value.length;
@@ -67,12 +86,8 @@ form.addEventListener("submit", (event) => {
   );
   showFieldError(
     emailInput,
-    document.getElementById("email-error"),
-    !email
-      ? "メールアドレスを入力してください。"
-      : emailInput.validity.typeMismatch
-        ? "メールアドレスの形で、入力してください（例：name@example.com）"
-        : "",
+    emailError,
+    getEmailError(),
     invalidFields
   );
   showFieldError(
