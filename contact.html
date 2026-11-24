@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>お問い合わせ｜okinawaの沼</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="contact.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="inner">
+      <a class="logo" href="index.html">okinawaの沼</a>
+      <nav>
+        <input type="checkbox" id="menu-check" class="menu-check">
+        <label for="menu-check" class="menu-btn">☰ メニュー</label>
+        <ul>
+          <li><a href="index.html">ホーム</a></li>
+          <li><a href="index.html#features">沖縄の魅力</a></li>
+          <li><a href="index.html#about">季節の楽しみ方</a></li>
+          <li><a href="index.html#access">旅行プラン</a></li>
+          <li><a href="contact.html">お問い合わせ</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="inner">
+        <h1>お問い合わせ</h1>
+        <form novalidate>
+          <p>
+            <label for="name">お名前（必須）</label>
+            <input type="text" id="name" name="name" autocomplete="name" aria-describedby="name-error" required>
+            <span class="field-error" id="name-error" aria-live="polite"></span>
+          </p>
+          <p>
+            <label for="email">メールアドレス（必須）</label>
+            <input type="email" id="email" name="email" autocomplete="email" aria-describedby="email-error" required>
+            <span class="field-error" id="email-error" aria-live="polite"></span>
+          </p>
+          <p>
+            <label for="subject">ご用件</label>
+            <select id="subject" name="subject" autocomplete="off" aria-describedby="subject-error">
+              <option value="reservation">席の予約</option>
+              <option value="question">お店への質問</option>
+              <option value="other">その他</option>
+            </select>
+            <span class="field-error" id="subject-error" aria-live="polite"></span>
+          </p>
+          <p>
+            <label for="message">お問い合わせの内容（必須・10文字以上・500文字まで）</label>
+            <textarea id="message" name="message" autocomplete="off" aria-describedby="message-error" minlength="10" maxlength="500" required></textarea>
+            <span class="field-error" id="message-error" aria-live="polite"></span>
+          </p>
+          <p>
+            <input type="checkbox" id="consent" name="consent" autocomplete="off" aria-describedby="consent-error" required>
+            <label for="consent">個人情報の取り扱いに同意する（必須）</label>
+            <br>
+            <span class="field-error" id="consent-error" aria-live="polite"></span>
+          </p>
+          <button type="submit">送信</button>
+        </form>
+        <section id="confirmation" aria-live="polite" hidden></section>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="inner">
+      <p>© 2026 サイト名</p>
+    </div>
+  </footer>
+</body>
+</html>
