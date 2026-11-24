@@ -3,6 +3,7 @@ const nameInput = document.getElementById("name");
 const emailInput = document.getElementById("email");
 const subjectInput = document.getElementById("subject");
 const messageInput = document.getElementById("message");
+const messageError = document.getElementById("message-error");
 const consentInput = document.getElementById("consent");
 const confirmation = document.getElementById("confirmation");
 
@@ -11,7 +12,9 @@ function showFieldError(field, errorElement, message, invalidFields) {
 
   if (message) {
     field.setAttribute("aria-invalid", "true");
-    invalidFields.push(field);
+    if (invalidFields) {
+      invalidFields.push(field);
+    }
   } else {
     field.removeAttribute("aria-invalid");
   }
@@ -25,6 +28,27 @@ function addConfirmationRow(list, label, value) {
   list.append(term, description);
 }
 
+function getMessageError() {
+  const length = messageInput.value.length;
+
+  if (length === 0) {
+    return "お問い合わせの内容を入力してください。";
+  }
+  if (length < 10) {
+    return `10文字以上入力してください。（現在${length}文字）`;
+  }
+  if (length > 500) {
+    return "お問い合わせの内容は500文字以内で入力してください。";
+  }
+  return "";
+}
+
+function updateMessageError() {
+  showFieldError(messageInput, messageError, getMessageError());
+}
+
+messageInput.addEventListener("input", updateMessageError);
+
 form.addEventListener("submit", (event) => {
   event.preventDefault();
 
@@ -32,7 +56,6 @@ form.addEventListener("submit", (event) => {
   const name = nameInput.value.trim();
   const email = emailInput.value.trim();
   const message = messageInput.value;
-  const trimmedMessage = message.trim();
   const allowedSubjects = ["reservation", "question", "other"];
   const subjectIsValid = allowedSubjects.includes(subjectInput.value);
 
@@ -48,7 +71,7 @@ form.addEventListener("submit", (event) => {
     !email
       ? "メールアドレスを入力してください。"
       : emailInput.validity.typeMismatch
-        ? "メールアドレスに「@」を含む正しい形式で入力してください。"
+        ? "メールアドレスの形で、入力してください（例：name@example.com）"
         : "",
     invalidFields
   );
@@ -60,14 +83,8 @@ form.addEventListener("submit", (event) => {
   );
   showFieldError(
     messageInput,
-    document.getElementById("message-error"),
-    !trimmedMessage
-      ? "お問い合わせの内容を入力してください。"
-      : message.length < 10
-        ? "お問い合わせの内容は10文字以上で入力してください。"
-        : message.length > 500
-          ? "お問い合わせの内容は500文字以内で入力してください。"
-          : "",
+    messageError,
+    getMessageError(),
     invalidFields
   );
   showFieldError(

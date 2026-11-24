@@ -198,6 +198,16 @@ main form > p {
   margin-bottom: var(--s3);
 }
 
+main form .field-error {
+  display: block;
+  margin-top: var(--s1);
+  color: var(--form-error);
+}
+
+main form .field-error:empty {
+  display: none;
+}
+
 main form label {
   display: block;
   margin-bottom: var(--s1);
@@ -246,13 +256,13 @@ main form textarea:focus-visible {
   outline-offset: var(--s1);
 }
 
-main form input:not([type="checkbox"]):user-invalid,
-main form select:user-invalid,
-main form textarea:user-invalid {
+main form input:not([type="checkbox"])[aria-invalid="true"],
+main form select[aria-invalid="true"],
+main form textarea[aria-invalid="true"] {
   border-color: var(--form-error);
 }
 
-main form input[type="checkbox"]:user-invalid {
+main form input[type="checkbox"][aria-invalid="true"] {
   accent-color: var(--form-error);
 }
 
