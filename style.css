@@ -288,4 +288,44 @@ main form button:focus-visible {
     padding: var(--s2);
   }
 }
+
+.card,
+.btn,
+button,
+.menu-btn {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover,
+.card:focus-visible,
+.btn:hover,
+.btn:focus-visible,
+button:hover,
+button:focus-visible,
+.menu-btn:hover,
+.menu-check:focus-visible + .menu-btn {
+  transform: translateY(-0.2rem);
+  box-shadow: 0 0.5rem 1rem var(--base-sub);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .btn,
+  button,
+  .menu-btn {
+    transition: none;
+  }
+
+  .card:hover,
+  .card:focus-visible,
+  .btn:hover,
+  .btn:focus-visible,
+  button:hover,
+  button:focus-visible,
+  .menu-btn:hover,
+  .menu-check:focus-visible + .menu-btn {
+    transform: none;
+    box-shadow: none;
+  }
+}
    
